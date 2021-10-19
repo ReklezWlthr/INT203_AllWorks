@@ -1,0 +1,29 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.navButton {
+    @apply px-3 py-2 text-lg font-semibold text-warmGray
+}
+
+.row {
+    @apply flex justify-start w-full gap-x-5 mb-3
+}
+
+.tb {
+    @apply bg-gray-100 w-96 py-1 px-2 text-sm rounded-sm focus:outline-none focus:ring focus:ring-purple-200 transition duration-100
+}
+
+.input {
+    @apply rounded-3xl w-80 bg-paleViolet focus:outline-none text-base text-darkViolet font-semibold px-4 py-2
+}
+
+.displayButton{
+    @apply font-bold bg-darkViolet text-paleViolet text-xl px-5 py-2 focus:outline-none rounded-full mx-auto hover:bg-lightPB hover:text-darkPB transition duration-100
+}
+
+.preventOverflow{
+    @apply whitespace-nowrap overflow-hidden overflow-ellipsis
+}

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Material Icon-->
+  <!--Source: https://material.io/resources/icons/?style=baseline -->
+  <!--Source: https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Iconmonnstr Icon-->
+  <!--Source: https://iconmonstr.com/iconicfont/#cdn -->
+  <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet">
+  <!--Tailwind CSS-->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Vue CDN -->
+  <!--Source: https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+    rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="images/leb2.jpeg" type="image/x-icon">
+  <title>LEB2 Support</title>
+</head>
+
+<body style="background-image: linear-gradient(to bottom, #f2f8f8, #f2f8f8); font-family: 'Lato', sans-serif;">
+  <div class="w-full justify-center flex-col" style="background-color: #13b4be; height: 69vh; color: #13b4be;">
+    <!--Navbar-->
+    <div class="w-full px-40 h-20 flex content-center pt-7">
+      <div class=" w-6/12 flex text-white my-auto grid grid-cols-12 gap-4 text-center">
+        <button class="col-span-4 w-full py-3 text-center text-3xl focus:outline-none"><img
+            src="https://theme.zdassets.com/theme_assets/2318396/ee68497a9442446e2316e26b454ce25cb864cbaa.svg"></button>
+        <button
+          class="col-span-2 transition duration-200 w-full py-3 text-center font-bold hover:opacity-50 focus:outline-none">Home</button>
+        <button
+          class="col-span-2 transition duration-200 w-full py-3 text-center font-bold hover:opacity-50 focus:outline-none">Community</button>
+        <button
+          class="col-span-2 transition duration-200 w-full py-3 text-center font-bold hover:opacity-50 focus:outline-none">Sign
+          in</button>
+      </div>
+      <div class=" w-1/12"></div>
+      <div class=" w-5/12 flex item-center justify-end my-auto grid grid-cols-3 gap-x-6">
+        <button
+          class="col-start-1 col-span-1 transition duration-200 w-full py-3 text-center font-bold text-white align-middle hover:opacity-50 focus:outline-none">English
+          (US) <i class="fas fa-angle-down pl-3"></i></button>
+        <button
+          class="col-start-2 col-span-1 transition duration-200 w-full py-3 text-center align-middle font-bold border-2 border-white text-white border-opacity-20 rounded-md justify-self-center hover:opacity-50 focus:outline-none">
+          Submit a
+          request</button>
+        <button
+          class="col-start-3 col-span-1 transition duration-200 w-full py-3 text-center align-middle font-bold rounded-md bg-white hover:bg-opacity-0 focus:outline-none hover:text-gray-800 hover:text-opacity-50">Sign
+          in</button>
+      </div>
+    </div>
+    <!--Landing Page-->
+    <div class=" w-full px-36 flex content-center text-white pt-7">
+      <div class="w-7/12 ml-5 mt-20">
+        <div class="font-semibold mb-2" style="font-size: 3.35rem;">How can we <span class="underline">help</span> you?
+        </div>
+        <div class="text-lg" style="color: #156b7a;">Search our knowledge base for answers to common questions.</div>
+      </div>
+      <div class="w-5/12 mt-3">
+        <img src="https://theme.zdassets.com/theme_assets/2318396/b1f98dc5a08a53a8afcded8559a31e325166a7d9.svg"
+          style="width: 499px; height: 260px;">
+      </div>
+    </div>
+  </div>
+  <!--Search Box-->
+  <div class="bg-white rounded-md -mt-24 mx-auto w-4/5 divide-y shadow-sm" style="height: 60vh;">
+    <div class="h-24">
+      <div class="py-2 pt-7 pl-7" style="font-size: 1.65rem;">
+        <img style="width: 26px; height: 26px; display: inline;"
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDU2Ljk2NiA1Ni45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Ik01NS4xNDYsNTEuODg3TDQxLjU4OCwzNy43ODZjMy40ODYtNC4xNDQsNS4zOTYtOS4zNTgsNS4zOTYtMTQuNzg2YzAtMTIuNjgyLTEwLjMxOC0yMy0yMy0yM3MtMjMsMTAuMzE4LTIzLDIzICBzMTAuMzE4LDIzLDIzLDIzYzQuNzYxLDAsOS4yOTgtMS40MzYsMTMuMTc3LTQuMTYybDEzLjY2MSwxNC4yMDhjMC41NzEsMC41OTMsMS4zMzksMC45MiwyLjE2MiwwLjkyICBjMC43NzksMCwxLjUxOC0wLjI5NywyLjA3OS0wLjgzN0M1Ni4yNTUsNTQuOTgyLDU2LjI5Myw1My4wOCw1NS4xNDYsNTEuODg3eiBNMjMuOTg0LDZjOS4zNzQsMCwxNyw3LjYyNiwxNywxN3MtNy42MjYsMTctMTcsMTcgIHMtMTctNy42MjYtMTctMTdTMTQuNjEsNiwyMy45ODQsNnoiIGZpbGw9IiMxM2I0YmUiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
+        <input type="text"
+          class="w-11/12 align-center placeholder-gray-500 placeholder-opacity-80 px-2 focus:outline-none h-10 text-gray-600 text-opacity-80"
+          placeholder="Start typing your search...">
+      </div>
+    </div>
+    <div style="height: 44vh;" class="px-8 pt-7 flex justify-center gap-7">
+      <button
+        class="searchbox bg-gray-200 bg-opacity-40 w-1/3 rounded-md border-gray-200 border border-opacity-70 focus:outline-none">
+        <img src="images/sign.jpg" style="width: 110px; height: 110px;" class="mx-auto mt-2 mb-5">
+        <div class="child w-full text-center font-bold text-2xl">
+          Guides
+        </div>
+        <div class="w-full text-center text-gray-400 mt-4">
+          Need help? We have you covered.
+        </div>
+      </button>
+      <button
+        class="searchbox bg-gray-200 bg-opacity-40 w-1/3 rounded-md border-gray-200 border border-opacity-70 focus:outline-none">
+        <img src="images/faq.jpg" style="width: 110px; height: 90px;" class="mx-auto mt-10 mb-8">
+        <div class="child w-full text-center font-bold text-2xl">
+          FAQ
+        </div>
+        <div class="w-3/5 text-center text-gray-400 mt-4 mx-auto">
+          Questions? Find the answers to any question.
+        </div>
+      </button>
+      <button
+        class="searchbox bg-gray-200 bg-opacity-40 w-1/3 rounded-md border-gray-200 border border-opacity-70 focus:outline-none">
+        <img src="images/commu.jpg" style="width: 100px; height: 115px;" class="mx-auto mt-8 mb-4">
+        <div class="child w-full text-center font-bold text-2xl">
+          Community
+        </div>
+        <div class="w-3/5 text-center text-gray-400 mt-4 mx-auto">
+          Ask questions and share your ideas!
+        </div>
+      </button>
+    </div>
+  </div>
+  <!--Getting Started-->
+  <div class="w-4/5 mx-auto">
+    <button class="head text-4xl font-bold mb-6 mt-24 focus:outline-none">Getting started
+      LEB2</button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Intro to LEB2
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Roles and Permission
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+  </div>
+  <!--Using LEB2-->
+  <div class="w-4/5 mx-auto">
+    <button class="head text-4xl font-bold mb-6 mt-24 focus:outline-none">Using LEB2</button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Design lesson plan & syllabus detail
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Create an activity
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Create online quiz
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Submission & assessment & score
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Class attendance
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Manage groups
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Make lives & share your screen
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Share file & discussion
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Learn it
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #14b4bc; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+  </div>
+  <!--Tips-->
+  <div class="w-4/5 mx-auto">
+    <button class="head text-left text-4xl font-bold mb-3 mt-24 focus:outline-none">Tips & More<br>
+    </button>
+    <div class="font-normal text-gray-500 text-opacity-70" style="font-size: 1.1rem;">Tips for beginners and expects
+      alike.</div>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        FAQ
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #13b4be; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Tips & tricks
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #13b4be; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Role-based handbooks
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #13b4be; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+  </div>
+  <!--Students-->
+  <div class="w-4/5 mx-auto">
+    <button class="head text-left text-4xl font-bold mb-6 mt-24 focus:outline-none">LEB2 for
+      students</button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Using LEB2
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #13b4be; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        FAQ
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #13b4be; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+    <button
+      class="topic w-full h-20 bg-white content-center flex flex-wrap rounded-md pl-8 mt-6 shadow-sm focus:outline-none">
+      <div class="text-left text-xl w-11/12">
+        Tips and Tricks
+      </div>
+      <div style="border-width: 15px; border-color: #defafb; color: #13b4be; font-size: 1.25rem;"
+        class="ml-7 h-6 w-6 rounded-full flex flex-wrap justify-center content-center">
+        <i class="fas fa-angle-down fa-lg mt-2"></i>
+      </div>
+    </button>
+  </div>
+  <!--Promote-->
+  <div class="w-4/5 mx-auto">
+    <div class="text-left text-4xl font-bold mb-3 mt-24 focus:outline-none" style="color: #373b53;">Promoted
+      articles<br>
+    </div>
+    <div class="font-normal text-gray-500 text-opacity-70 mb-5" style="font-size: 1.1rem;">Find our featured articles and
+      guides here</div>
+    <div class="grid grid-cols-3 gap-x-7">
+      <button
+        class="w-full h-52 bg-white flex flex-wrap rounded-md mt-6 shadow-sm pl-8 pt-4 focus:outline-none hover:shadow-md transition duration-200">
+        <div class="text-left text-xl w-11/12 text-gray-500 text-opacity-70 grid grid-cols-12">
+          <img src="https://c4edsupport.zendesk.com/system/photos/900050191306/chat.png"
+            class="col-span-3 rounded-full w-11 h-11 inline">
+          <div class="text-sm inline col-span-5 col-start-9 mt-3 text-right">January 22, 2021</div>
+        </div>
+        <div class="text-left" style="color: #14b4bc; font-size: 1.35rem;">
+          Get ready for the new semester 2/2020 with LEB2!
+        </div>
+        <div class="-mt-3 text-left text-gray-500 text-opacity-70">
+          Get ready for the new semester 1/2020 with LEB2...
+        </div>
+      </button>
+      <button
+        class="w-full h-52 bg-white flex flex-wrap rounded-md mt-6 shadow-sm pl-8 pt-4 focus:outline-none hover:shadow-md transition duration-200">
+        <div class="text-left text-xl w-11/12 text-gray-500 text-opacity-70 grid grid-cols-12">
+          <img src="https://c4edsupport.zendesk.com/system/photos/900050191306/chat.png"
+            class="col-span-3 rounded-full w-11 h-11 inline">
+          <div class="text-sm inline col-span-5 col-start-8 mt-3 text-right">December 8, 2020</div>
+        </div>
+        <div class="text-left" style="color: #14b4bc; font-size: 1.35rem;">
+          How to create an individual assessment activity
+        </div>
+        <div class="-mt-3 text-left text-gray-500 text-opacity-70 pr-8">
+          Individual Assessment Activity is the activity ...
+        </div>
+      </button>
+      <button
+        class="w-full h-52 bg-white flex flex-wrap rounded-md mt-6 shadow-sm pl-8 pt-4 focus:outline-none hover:shadow-md transition duration-200">
+        <div class="text-left text-xl w-11/12 text-gray-500 text-opacity-70 grid grid-cols-12">
+          <img src="https://c4edsupport.zendesk.com/system/photos/360132214153/logo-01.png"
+            class="col-span-3 rounded-full w-11 h-11 inline">
+          <div class="text-sm inline col-span-5 col-start-8 mt-3 text-right">December 3, 2020</div>
+        </div>
+        <div class="text-left -mt-5" style="color: #14b4bc; font-size: 1.35rem;">
+          Create a Quiz
+        </div>
+        <div class="text-left text-gray-500 text-opacity-70 pr-8 -mt-9">
+          If you want to create a quiz for assessment act...
+        </div>
+      </button>
+      <button
+        class="w-full h-44 bg-white flex flex-wrap rounded-md mt-6 shadow-sm pl-8 pt-4 focus:outline-none hover:shadow-md transition duration-200">
+        <div class="text-left text-xl w-11/12 text-gray-500 text-opacity-70 grid grid-cols-12">
+          <img src="https://c4edsupport.zendesk.com/system/photos/360132214153/logo-01.png"
+            class="col-span-3 rounded-full w-11 h-11 inline">
+          <div class="text-sm inline col-span-5 col-start-9 mt-3">January 22, 2021</div>
+        </div>
+        <div class="text-left" style="color: #14b4bc; font-size: 1.35rem;">
+          Quiz Setting
+        </div>
+        <div class="text-left text-gray-500 text-opacity-70 pr-8 -mt-2">
+          Would you like the quiz to be more effective? Y...
+        </div>
+      </button>
+    </div>
+  </div>
+  <!--Question-->
+  <div class="bg-white w-4/5 rounded-md mt-20 mx-auto shadow-sm" style="height: 44vh;">
+    <div class=" w-full pl-14 pr-4 flex pt-7">
+      <div class="w-7/12 ml-5 mt-10">
+        <div class="font-semibold mb-2" style="font-size: 2.75rem; color: #373b53;">Still Have <span
+            class="underline">Questions</span>?
+        </div>
+        <div class="text-lg text-gray-500 text-opacity-70 mt-5">Our customer care team is here for you!
+        </div>
+        <button
+          class="bg-green-500 opacity-80 text-white px-8 py-3 font-bold rounded-md mt-8 transition duration-200 hover:bg-green-800 hover:shadow-sm hover:opacity-90 focus:outline-none">
+          Contact Us
+        </button>
+      </div>
+      <div class="w-5/12 mt-3">
+        <img src="https://theme.zdassets.com/theme_assets/2318396/1cf8dd0ed14da1a6df95815bc20961e8cf456460.svg"
+          style="width: 499px; height: 260px;">
+      </div>
+    </div>
+  </div>
+  <!--Footer-->
+  <div class="w-4/5 mt-20 mx-auto grid grid-cols-12" style="height: 15vh;">
+    <button class="h-0 w-1/4 col-span-5 focus:outline-none"><img
+        src="https://theme.zdassets.com/theme_assets/2318396/919ad7d3880f77782f2d56d334e3986c2a62da26.svg"></button>
+    <div class="col-span-2">
+      <div class="font-bold mb-6">
+        LINKS
+      </div>
+      <button class="footer mb-4 block focus:outline-none text-gray-600" style="font-size: 0.85rem;">
+        About us
+      </button>
+      <button class="footer block focus:outline-none text-gray-600" style="font-size: 0.85rem;">
+        Jobs
+      </button>
+    </div>
+    <div class="col-span-2">
+      <div class="font-bold mb-6">
+        SUPPORT
+      </div>
+      <button class="footer mb-4 block focus:outline-none text-gray-600" style="font-size: 0.85rem;">
+        Fast track tutorials
+      </button>
+      <button class="footer block focus:outline-none text-gray-600" style="font-size: 0.85rem;">
+        Tips of the day
+      </button>
+    </div>
+    <div class="col-span-3">
+      <div class="font-bold mb-6">
+        CONTACTS
+      </div>
+      <button class="footer mb-4 block focus:outline-none text-gray-600" style="font-size: 0.85rem;">
+        leb2@mail.kmutt.ac.th
+      </button>
+      <div class="grid grid-cols-6 w-full">
+        <button style="border-width: 13px; color: white; border-color: #11166e; font-size: 0.7rem;"
+          class="h-2 w-2 rounded-full flex flex-wrap justify-center content-center opacity-70 transition duration-200 hover:opacity-100 focus:outline-none">
+          <i class="fab fa-facebook-square fa-lg mt-0.5"></i>
+        </button>
+        <button style="border-width: 13px; color: white; border-color: #e41b1b; font-size: 0.7rem;"
+          class="h-2 w-2 rounded-full flex flex-wrap justify-center content-center opacity-50 transition duration-200 hover:opacity-100 focus:outline-none">
+          <i class="fab fa-youtube fa-lg mt-0.5"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-4/5 mx-auto text-gray-600" style="font-size: 0.9rem; height:11vh;">
+    @ LEB2 Support
+  </div>
+  <button class="font-extrabold rounded-full px-6 py-3 fixed bottom-4 right-5 focus:outline-none"
+    style="background-color: #24b6c3; color: #14474c;">
+    <i class="far fa-question-circle text-xl mr-1"></i> Help
+  </button>
+</body>
+
+</html>

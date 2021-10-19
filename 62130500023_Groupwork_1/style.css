@@ -1,0 +1,36 @@
+.searchbox:hover .child {
+    color: #13b4be;
+    transition-duration: 200ms;
+}
+
+.searchbox:hover {
+    transition-duration: 200ms;
+    border-color: #13b4be;
+    outline: none;
+}
+
+.topic {
+    color: #13b4be;
+}
+
+.topic:hover{
+    color: #373c50;
+    transition-duration: 200ms;
+    outline: none;
+}
+
+.head{
+    color: #373b53;
+}
+
+.head:hover{
+    color: #13b4be;
+    transition-duration: 200ms;
+    outline: none;
+}
+
+.footer:hover{
+    color: #13b4be;
+    transition-duration: 200ms;
+    outline: none; 
+}

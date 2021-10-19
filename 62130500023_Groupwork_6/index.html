@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Material Icon-->
+    <!--Source: https://material.io/resources/icons/?style=baseline -->
+    <!--Source: https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Iconmonnstr Icon-->
+    <!--Source: https://iconmonstr.com/iconicfont/#cdn -->
+    <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet">
+    <!--Tailwind CSS-->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <!-- Vue CDN -->
+    <!--Source: https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <title>Profile Page</title>
+</head>
+
+<body class="bg-gray-300" style="font-family: 'Varela Round', sans-serif;">
+    <div id="app" class="container flex justify-center py-6">
+        <div class="p-5 bg-white rounded-xl shadow">
+            <div class="w-full">
+                <div class="w-full font-bold text-2xl mb-4 pb-1 border-b-2"> Profile </div>
+                <div class="flex justify-between pb-4 mb-4 border-b-2"> <img :src="pro"
+                        class="rounded-full border-4 p-1 w-32 h-32 transition duration-300 object-cover" :class="genderSwitch">
+                    <div class="relative mt-24 -ml-8">
+                        <input @change="upload" type="file" id="myFile" class="inputFile hidden">
+                        <label for="myFile" id="spin"
+                            class="h-5 w-5 rounded-full flex flex-wrap justify-center content-center border-gray-600 text-gray-200 cursor-pointer"
+                            style="border-width: 1rem;"><i class="fas fa-sync-alt"></i></label>
+                    </div>
+                    <div class="ml-2">
+                        <div class="px-1">
+                            <span class="font-bold">{{ fname ? fname : 'Firstname' }}
+                                {{ lname ? lname : 'Lastname' }}<span class="text-sm">{{ age ? ', ' + age : '' }}</span></span>
+                        </div>
+                        <div class="px-1 pb-2">
+                            <span class="text-sm text-gray-500">@{{ user ? user : 'username' }}</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-200 rounded-lg">
+                            <div class="mr-3"> <span class="text-gray-400 block">Article</span> <span
+                                    class="font-bold text-black text-sm">{{ art }}</span> </div>
+                            <div class="mr-3"> <span class="text-gray-400 block">Followers</span> <span
+                                    class="font-bold text-black text-sm">{{ fol }}</span> </div>
+                            <div> <span class="text-gray-400 block">Ratings</span> <span
+                                    class="font-bold text-black text-sm">{{ rate }}</span> </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="errors" class="text-red-500 mb-3">
+                    <b class="text-sm">Please check the following requirements: </b>
+                </div>
+                <div :class="row">
+                    <div>
+                        <div class="text-sm"> First Name <span class="text-red-500 font-bold">*</span> </div>
+                        <input v-model.trim="fname" :class="tb">
+                        <error-text attr="fname" :errors="errors" :error-class="errorClass"></error-text>
+                    </div>
+                    <div>
+                        <div class="text-sm"> Last Name <span class="text-red-500 font-bold">*</span> </div>
+                        <input v-model.trim="lname" :class="tb">
+                        <error-text attr="lname" :errors="errors" :error-class="errorClass"></error-text>
+                    </div>
+                </div>
+                <div :class="row">
+                    <div>
+                        <div class="text-sm"> Age <span class="text-red-500 font-bold">*</span> </div>
+                        <input v-model.number="age" :class="tb">
+                        <error-text attr="age" :errors="errors" :error-class="errorClass"></error-text>
+                    </div>
+                    <div>
+                        <div class="text-sm"> Gender <span class="text-red-500 font-bold">*</span> </div>
+                        <div class="flex gap-x-4 py-0.5">
+                            <div>
+                                <input type="radio" id="m" name="gender" v-model="gender" value="m"> <label for="m"
+                                    class="text-sm">
+                                    Male </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="f" name="gender" v-model="gender" value="f"> <label for="f"
+                                    class="text-sm">
+                                    Famale </label>
+                            </div>
+                        </div>
+                        <error-text attr="gender" :errors="errors" :error-class="errorClass"></error-text>
+                    </div>
+                </div>
+                <div :class="row">
+                    <div>
+                        <div class="text-sm"> Email <span class="text-red-500 font-bold">*</span> </div>
+                        <input v-model.trim="email" :class="tb">
+                        <error-text attr="email" :errors="errors" :error-class="errorClass"></error-text>
+                    </div>
+                    <div>
+                        <div class="text-sm"> Phone Number </div>
+                        <input v-model.trim="phone" :class="tb">
+                        <error-text attr="phone" :errors="errors" :error-class="errorClass"></error-text>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="text-sm"> Username <span class="text-red-500 font-bold">*</span> </div>
+                    <input v-model="user" class="w-full" :class="tb">
+                    <error-text attr="user" :errors="errors" :error-class="errorClass"></error-text>
+                </div>
+                <div class="mb-3">
+                    <div class="text-sm"> Password <span class="text-red-500 font-bold">*</span> </div>
+                    <div class="text-red-500 text-xs">** Your password must contain only a-z and 0-9 **</div>
+                    <div class="flex w-full gap-x-4">
+                        <input :type="passOn ? 'password' : 'text'" v-model="password" class="w-full" :class="tb"
+                            @input="validatePattern">
+                        <i class="fas fa-eye cursor-pointer transition duration-200 mt-1"
+                            :class="passOn ? 'text-gray-400' : 'text-black'" @click="togglePass"></i>
+                    </div>
+                    <error-text attr="password" :errors="errors" :error-class="errorClass"></error-text>
+                    <div v-if="passValidation" :class="errorClass"><i class="fas fa-exclamation-circle mr-1"></i>Invalid Password</div>
+                </div>
+                <div>
+                    <div class="text-sm"> Confirm Password <span class="text-red-500 font-bold">*</span> </div>
+                    <div class="flex w-full gap-x-4">
+                        <input :type="conPassOn ? 'password' : 'text'" v-model="confirmPassword" class="w-full"
+                            :class="tb" @input="validatePassword">
+                        <i class="fas fa-eye cursor-pointer transition duration-200 mt-1"
+                            :class="conPassOn ? 'text-gray-400' : 'text-black'" @click="toggleConPass"></i>
+                    </div>
+                    <error-text attr="confirmPassword" :errors="errors" :error-class="errorClass"></error-text>
+                    <div v-if="isInequal" :class="errorClass"><i class="fas fa-exclamation-circle mr-1"></i>{{ equality[0] }}
+                    </div>
+                </div>
+            </div>
+            <div class=" mt-5"> <button @click="validateForm"
+                            class="w-full h-12 rounded-md border-2 text-md hover:shadow hover:bg-red-500 hover:border-red-500 hover:text-white focus:outline-none transition duration-200">Save
+                            Changes</button>
+                    </div>
+                </div>
+            </div>
+            <!-- my main.js -->
+            <script src="./main.js"></script>
+            <script src="./components/ErrorText.js"></script>
+            <script>
+               mount = app.mount('#app');
+            </script>
+</body>
+
+</html>

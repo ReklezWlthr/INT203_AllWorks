@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Material Icon-->
+  <!--Source: https://material.io/resources/icons/?style=baseline -->
+  <!--Source: https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Iconmonnstr Icon-->
+  <!--Source: https://iconmonstr.com/iconicfont/#cdn -->
+  <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet">
+  <!--Tailwind CSS-->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Vue CDN -->
+  <!--Source: https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <link href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+  <title>Photo Gallery</title>
+</head>
+
+<body class="bg-gray-200" style="font-family: 'Varela Round', sans-serif;">
+  <div id="app" class="w-1/3 bg-white flex-col p-5 rounded-xl shadow-md mt-5 mx-auto">
+    <div class="w-full text-3xl font-bold text-center border-b-2 pb-2 border-gray-300">Photo Gallery</div>
+    <div class="w-7/12 bg-gray-200 rounded-xl flex justify-between item-center px-14 mt-5 py-2 mx-auto my-4">
+      <div class="text-center">
+        <span class="text-gray-500 block">Total</span> <span class="font-bold text-black text-xl">{{ total }}</span>
+      </div>
+      <div class="text-center">
+        <span class="text-gray-500 block">Liked</span>
+        <span class="font-bold text-black text-xl">{{ liked }}</span>
+      </div>
+    </div>
+    <div class="w-full flex justify-end h-10" v-show="searchButton">
+      <i class="fas fa-search text-2xl cursor-pointer" @click="triggerSearch"></i>
+    </div>
+    <div class="mx-auto w-11/12 h-10 flex justify-center" v-show="searchBox">
+      <input v-model="search" class="border-2 rounded-md w-9/12 mr-3 focus:outline-none px-2 py-1"
+        placeholder="Enter Text to Search">
+      <button class="rounded-md px-2 py-1 bg-blue-200 focus:outline-none" @click="triggerSearch">Cancel</button>
+    </div>
+    <transition name="slide">
+      <div class="flex flex-wrap mx-auto bg-gray-200 px-5 py-3 rounded-md mt-3" v-show="canvas"
+        style="height: 18.5rem;">
+        <div class="w-full flex justify-end"><i class="fas fa-times text-2xl cursor-pointer" @click="closeCanvas"></i>
+        </div>
+        <div class="flex-wrap ml-3 w-full">
+          <i class="fas fa-chevron-left text-2xl cursor-pointer" @click="prev"></i>
+          <img class="w-9/12 inline-block rounded-xl mx-8" :src="photos[iter].src">
+          <i class="fas fa-chevron-right text-2xl cursor-pointer" @click="next"></i>
+        </div>
+      </div>
+    </transition>
+    <div class="w-full my-5" v-for="photo in filteredPhotos">
+      <img class="transition duration-300 w-48 inline-block rounded-xl mr-5 hover:shadow-md cursor-pointer"
+        :src="photo.src" @click="fav(photo.id)">
+      <transition name="bounce">
+        <i v-show="photo.faved" class="fas fa-heart text-red-500 text-2xl z-10 absolute -ml-14 mt-2"></i>
+      </transition>
+      <div class="inline-block">
+        <span class="block">{{ photo.photoDesc }}</span>
+        <i class="fas fa-search-plus text-xl mt-3 text-gray-300 cursor-pointer hover:text-gray-400 transition duration-300"
+          @click="showCanvas(photo.id)"></i>
+      </div>
+    </div>
+    <div class="w-full flex justify-center mt-5" v-if="notfound">
+      No Photos Found
+    </div>
+  </div>
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
